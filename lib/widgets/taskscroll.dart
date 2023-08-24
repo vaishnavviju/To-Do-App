@@ -129,32 +129,33 @@ class _TaskScrollState extends State<TaskScroll> {
                             if (widget.action == "view" ||
                                 widget.action == "delete")
                               Checkbox(
-                                  tristate: true,
+                                  //tristate: true,
                                   activeColor: Color.fromARGB(255, 10, 4, 99),
                                   value: (widget.action == "view")
                                       ? ((snap[index]['status'] == "incomplete")
                                           ? false
                                           : true)
-                                      : (delete.isEmpty ||
+                                      : ((delete.isEmpty ||
                                               !delete
                                                   .containsKey(snap[index].id))
                                           ? false
-                                          : delete[snap[index].id],
+                                          : delete[snap[index].id]),
                                   onChanged: (value) {
-                                    if (value == false &&
+                                    if (value == true &&
                                         widget.action == "view") {
                                       FirebaseFirestore.instance
                                           .collection("tasks")
                                           .doc(snap[index].id)
                                           .update({"status": "complete"});
-                                    } else if (value == true &&
+                                    }
+                                    if (value == false &&
                                         widget.action == "view") {
                                       FirebaseFirestore.instance
                                           .collection("tasks")
                                           .doc(snap[index].id)
                                           .update({"status": "incomplete"});
-                                    } else if (delete
-                                        .containsKey(snap[index].id)) {
+                                    } else if (widget.action == "delete" &&
+                                        delete.containsKey(snap[index].id)) {
                                       setState(() {
                                         delete[snap[index].id] =
                                             !delete[snap[index].id]!;
