@@ -208,11 +208,13 @@ Widget start(int a) {
               itemCount: messages.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return OverviewCard(
-                    task: messages[index].data()['text'],
-                    description: messages[index].data()['description'],
-                    category: messages[index].data()['category'],
-                    completeDate: (messages[index].data()['date']).toDate());
+                return (messages[index].data()['status'] != "complete")
+                    ? OverviewCard(
+                        task: messages[index].data()['text'],
+                        description: messages[index].data()['description'],
+                        category: messages[index].data()['category'],
+                        completeDate: (messages[index].data()['date']).toDate())
+                    : Container();
               });
         } else if (a == 1) {
           return ListView.builder(
@@ -224,11 +226,14 @@ Widget start(int a) {
                         .compareTo(DateTime.parse(DateFormat('yyyy-MM-dd')
                             .format(DateTime.now())))) ==
                     1) {
-                  return OverviewCard(
-                      task: messages[index].data()['text'],
-                      description: messages[index].data()['description'],
-                      category: messages[index].data()['category'],
-                      completeDate: (messages[index].data()['date']).toDate());
+                  return (messages[index].data()['status'] != "complete")
+                      ? OverviewCard(
+                          task: messages[index].data()['text'],
+                          description: messages[index].data()['description'],
+                          category: messages[index].data()['category'],
+                          completeDate:
+                              (messages[index].data()['date']).toDate())
+                      : Container();
                 } else {
                   return Container();
                 }
@@ -242,11 +247,14 @@ Widget start(int a) {
                         .format(messages[index].data()['date'].toDate()))
                     .isBefore(DateTime.parse(
                         DateFormat('yyyy-MM-dd').format(DateTime.now())))) {
-                  return OverviewCard(
-                      task: messages[index].data()['text'],
-                      description: messages[index].data()['description'],
-                      category: messages[index].data()['category'],
-                      completeDate: (messages[index].data()['date']).toDate());
+                  return (messages[index].data()['status'] != "complete")
+                      ? OverviewCard(
+                          task: messages[index].data()['text'],
+                          description: messages[index].data()['description'],
+                          category: messages[index].data()['category'],
+                          completeDate:
+                              (messages[index].data()['date']).toDate())
+                      : Container();
                 } else {
                   return Container();
                 }
@@ -257,11 +265,14 @@ Widget start(int a) {
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 if (messages[index].data()['category'] == "personal") {
-                  return OverviewCard(
-                      task: messages[index].data()['text'],
-                      description: messages[index].data()['description'],
-                      category: messages[index].data()['category'],
-                      completeDate: (messages[index].data()['date']).toDate());
+                  return (messages[index].data()['status'] != "complete")
+                      ? OverviewCard(
+                          task: messages[index].data()['text'],
+                          description: messages[index].data()['description'],
+                          category: messages[index].data()['category'],
+                          completeDate:
+                              (messages[index].data()['date']).toDate())
+                      : Container();
                 } else {
                   return Container();
                 }
@@ -272,11 +283,14 @@ Widget start(int a) {
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 if (messages[index].data()['category'] == "work") {
-                  return OverviewCard(
-                      task: messages[index].data()['text'],
-                      description: messages[index].data()['description'],
-                      category: messages[index].data()['category'],
-                      completeDate: (messages[index].data()['date']).toDate());
+                  return (messages[index].data()['status'] != "complete")
+                      ? OverviewCard(
+                          task: messages[index].data()['text'],
+                          description: messages[index].data()['description'],
+                          category: messages[index].data()['category'],
+                          completeDate:
+                              (messages[index].data()['date']).toDate())
+                      : Container();
                 } else {
                   return Container();
                 }
@@ -287,11 +301,14 @@ Widget start(int a) {
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 if (messages[index].data()['category'] == "education") {
-                  return OverviewCard(
-                      task: messages[index].data()['text'],
-                      description: messages[index].data()['description'],
-                      category: messages[index].data()['category'],
-                      completeDate: (messages[index].data()['date']).toDate());
+                  return (messages[index].data()['status'] != "complete")
+                      ? OverviewCard(
+                          task: messages[index].data()['text'],
+                          description: messages[index].data()['description'],
+                          category: messages[index].data()['category'],
+                          completeDate:
+                              (messages[index].data()['date']).toDate())
+                      : Container();
                 } else {
                   return Container();
                 }
